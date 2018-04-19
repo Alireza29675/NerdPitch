@@ -22,12 +22,21 @@ body {
         }
     }
 
+    p {
+        color: #AAA;
+        font-size: 21px;
+        width: 370px;
+        margin: 0;
+        margin-top: 20px;
+        padding: 0;
+    }
+
     a.login {
         padding: 8px 45px 10px 45px;
         display: inline-block;
         margin-top: 40px;
         border-radius: 10px;
-        background: #4ca5b4;
+        background: #4ca4b432;
         color: white;
         text-decoration: none;
         font-size: 17px;
