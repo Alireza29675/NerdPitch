@@ -1,4 +1,6 @@
 const fs = require('fs');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+
 const bundleNames = fs.readdirSync('./client/bundles');
 const entries = {};
 for (let name of bundleNames) {
@@ -21,5 +23,8 @@ module.exports = {
                 loader: 'babel-loader',
                 query: { presets: ['es2015'] }
             }]
-    }
+    },
+    plugins: [
+        new UglifyJsPlugin({ sourceMap: true })
+    ]
 };
