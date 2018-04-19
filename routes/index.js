@@ -3,7 +3,13 @@ const router = express.Router();
 const auth = require('../server/AuthController');
 
 router.get('/', (req, res, err) => {
+
+    // redirects user to /home if he/she has logged in already
+    if (req.isAuthenticated()) return res.redirect('/home');
+
+    // otherwise renders index view
     res.render('index');
+    
 })
 
 const setUserRoutes = () => {

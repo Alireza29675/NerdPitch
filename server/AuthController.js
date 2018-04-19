@@ -6,8 +6,13 @@ var userController = {};
 
 // Restrict access to root page
 userController.home = function(req, res) {
-    if (!req.isAuthenticated()) res.redirect('/login')
+    
+    // redirects to /login if user hasn't logged in yet
+    if (!req.isAuthenticated()) return res.redirect('/login');
+
+    // otherwise it renders home view
     res.render('user/home', { user : req.user });
+    
 };
 
 // Go to registration page
