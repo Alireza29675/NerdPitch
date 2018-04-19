@@ -12,20 +12,20 @@ userController.home = function(req, res) {
     if (!req.isAuthenticated()) return res.redirect('/login');
 
     // otherwise it renders home view
-    res.render('users/home', { user : req.user });
+    res.render('users/home', { user: req.user, url: 'home' });
 
 };
 
 // Go to registration page
 userController.register = function(req, res) {
-    res.render('users/register');
+    res.render('users/register', { url: 'register' });
 };
 
 // Post registration
 userController.doRegister = function(req, res) {
     User.register(new User({ username : req.body.username, name: req.body.name }), req.body.password, function(err, user) {
         if (err) {
-            return res.render('users/register', { user : user });
+            return res.render('users/register', { user: user, url: 'register' });
         }
 
         passport.authenticate('local')(req, res, function () {
@@ -36,7 +36,7 @@ userController.doRegister = function(req, res) {
 
 // Go to login page
 userController.login = function(req, res) {
-    res.render('users/login', { redirect: req.query.redirect || '/home' });
+    res.render('users/login', { redirect: req.query.redirect || '/home', url: 'login' });
 };
 
 // Post login
@@ -61,7 +61,7 @@ userController.presentations = function(req, res) {
     // otherwise it renders presentations view
     Presentation.find({ author: req.user._id }).exec((err, presentations) => {
 
-        res.render('users/presentations/list', { user : req.user, presentations: presentations });
+        res.render('users/presentations/list', { user : req.user, presentations: presentations, url: 'presentations' });
 
     })
 
@@ -74,7 +74,7 @@ userController.createPresentation = function(req, res) {
     if (!req.isAuthenticated()) return res.redirect('/login?redirect=/presentations/new');
 
     // otherwise it renders new presentation view
-    res.render('users/presentations/new', { user: req.user });
+    res.render('users/presentations/new', { user: req.user, url: 'presentations/new' });
 
 };
 

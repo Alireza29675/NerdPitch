@@ -6,11 +6,19 @@ html
     link(rel="stylesheet", href="/stylesheets/user.css")
   body
     nav
+      li
+        a(href='/')
+          img(src="/images/nerdpitch.png", alt="NerdPitch Logo")
       if (!user)
-        li
-          a(href='/login') Login
-        li
-          a(href='/register') Register
+
+        if (url !== 'login')
+          li
+            a(href='/login') Login
+
+        if (url !== 'register')
+          li
+            a(href='/register') Register
+
       if (user)
         li
           a(href='/home') Welcome #{user.name}
