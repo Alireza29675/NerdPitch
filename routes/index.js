@@ -9,8 +9,8 @@ router.get('/', (req, res, err) => {
 
     // otherwise renders index view
     res.render('index');
-    
-})
+
+});
 
 const setUserRoutes = () => {
 
