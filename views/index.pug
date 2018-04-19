@@ -2,6 +2,7 @@ extends layout
 
 block content
     .center
-        h1.title!= 'nerd<span>pitch<span>'
+        h1.hidden nerdpitch
+        img(src="/images/nerdpitch.png", alt="NerdPitch logo")
         p NerdPitch is a the most beloved tool for spreading knowledge and ideas.
         a.login(href='/login') Login first!
