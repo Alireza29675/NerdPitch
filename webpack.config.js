@@ -1,9 +1,14 @@
+const fs = require('fs');
+const bundleNames = fs.readdirSync('./client/bundles');
+const entries = {};
+for (let name of bundleNames) {
+    entries[name] = `./client/bundles/${name}/index.js`
+}
+
 module.exports = {
     mode: 'development',
     devtool: 'inline-source-map',
-    entry: {
-        vendor: './client/bundles/vendor/index.js'
-    },
+    entry: entries,
     output: {
         filename: './javascripts/[name].bundle.js',
         sourceMapFilename: './javascripts/[name].bundle.js.map'
