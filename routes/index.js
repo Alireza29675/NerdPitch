@@ -37,6 +37,9 @@ const setUserRoutes = () => {
     // route for going to presentations page
     router.get('/presentations', user.presentations);
 
+    // route for creating new presentation
+    router.get('/presentations/new', user.createPresentation);
+
 }
 
 const setPresentationRoutes = () => {

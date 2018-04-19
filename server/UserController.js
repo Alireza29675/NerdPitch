@@ -36,13 +36,13 @@ userController.doRegister = function(req, res) {
 
 // Go to login page
 userController.login = function(req, res) {
-    res.render('users/login');
+    res.render('users/login', { redirect: req.query.redirect || '/home' });
 };
 
 // Post login
 userController.doLogin = function(req, res) {
     passport.authenticate('local')(req, res, function () {
-        res.redirect('/home');
+        res.redirect(req.param('redirect') || '/home');
     });
 };
 
@@ -56,14 +56,25 @@ userController.logout = function(req, res) {
 userController.presentations = function(req, res) {
     
     // redirects to /login if user hasn't logged in yet
-    if (!req.isAuthenticated()) return res.redirect('/login');
+    if (!req.isAuthenticated()) return res.redirect('/login?redirect=/presentations');
 
     // otherwise it renders presentations view
     Presentation.find({ author: req.user._id }).exec((err, presentations) => {
 
-        res.render('users/presentations', { user : req.user, presentations: presentations });
+        res.render('users/presentations/list', { user : req.user, presentations: presentations });
 
     })
+
+};
+
+// create presentation page
+userController.createPresentation = function(req, res) {
+    
+    // redirects to /login if user hasn't logged in yet
+    if (!req.isAuthenticated()) return res.redirect('/login?redirect=/presentations/new');
+
+    // otherwise it renders new presentation view
+    res.render('users/presentations/new', { user: req.user });
 
 };
 
