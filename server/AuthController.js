@@ -11,20 +11,20 @@ userController.home = function(req, res) {
     if (!req.isAuthenticated()) return res.redirect('/login');
 
     // otherwise it renders home view
-    res.render('user/home', { user : req.user });
-    
+    res.render('users/home', { user : req.user });
+
 };
 
 // Go to registration page
 userController.register = function(req, res) {
-    res.render('user/register');
+    res.render('users/register');
 };
 
 // Post registration
 userController.doRegister = function(req, res) {
     User.register(new User({ username : req.body.username, name: req.body.name }), req.body.password, function(err, user) {
         if (err) {
-            return res.render('user/register', { user : user });
+            return res.render('users/register', { user : user });
         }
 
         passport.authenticate('local')(req, res, function () {
@@ -35,7 +35,7 @@ userController.doRegister = function(req, res) {
 
 // Go to login page
 userController.login = function(req, res) {
-    res.render('user/login');
+    res.render('users/login');
 };
 
 // Post login
