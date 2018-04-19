@@ -2,7 +2,12 @@ extends layout
 
 block content
   
-  ul
-    li Presentation 1
-    li Presentation 2
-    li Presentation 3
+    a(href='/presentations/new')
+        button Create new presentation
+
+    ul
+    - for (let presentation of presentations) {
+        li
+            a(href='/show/' + presentation.url)
+            h1 #{presentation.title}
+    - }

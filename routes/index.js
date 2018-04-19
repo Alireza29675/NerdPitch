@@ -34,6 +34,9 @@ const setUserRoutes = () => {
     // route for logout action
     router.get('/logout', user.logout);
 
+    // route for going to presentations page
+    router.get('/presentations', user.presentations);
+
 }
 
 const setPresentationRoutes = () => {

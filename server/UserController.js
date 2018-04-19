@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 var passport = require("passport");
 var User = require("./model/User");
+var Presentation = require('./model/Presentation');
 
 var userController = {};
 
@@ -49,6 +50,21 @@ userController.doLogin = function(req, res) {
 userController.logout = function(req, res) {
     req.logout();
     res.redirect('/');
+};
+
+// presentations page
+userController.presentations = function(req, res) {
+    
+    // redirects to /login if user hasn't logged in yet
+    if (!req.isAuthenticated()) return res.redirect('/login');
+
+    // otherwise it renders presentations view
+    Presentation.find({ author: req.user._id }).exec((err, presentations) => {
+
+        res.render('users/presentations', { user : req.user, presentations: presentations });
+
+    })
+
 };
 
 module.exports = userController;
