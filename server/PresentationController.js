@@ -1,4 +1,5 @@
 const Presentation = require('./model/Presentation')
+const User = require('../server/model/User')
 
 var presentationController = {};
 
@@ -29,9 +30,10 @@ presentationController.create = function(req, res) {
 presentationController.show = function(req, res) {
 
     Presentation.findOne({ url: req.params.url }).populate('author').exec((err, presentation) => {
-        
+
         // if couldn't find presentation
         if (err || !presentation) {
+            console.log(err)
             const message = `Oops! We couldn't find /${req.params.url}`;
             res.locals.message = message;
             res.status(404);
