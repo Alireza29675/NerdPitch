@@ -3,7 +3,7 @@ const db = require('./db');
 var PresentationSchema = new db.Schema({
     title: String,
     content: String,
-    author: { type: db.ObjectId, ref: 'UserSchema' },
+    author: { type: db.Schema.ObjectId, ref: 'UserSchema' },
     url: {
         type: String,
         unique: true

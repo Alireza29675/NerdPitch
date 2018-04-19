@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
+
 const auth = require('../server/AuthController');
+const presentation = require('../server/PresentationController');
 
 router.get('/', (req, res, err) => {
 
@@ -34,6 +36,11 @@ const setUserRoutes = () => {
 
 }
 
+const setPresentationRoutes = () => {
+    router.get('/show/:url', presentation.show)
+}
+
 setUserRoutes();
+setPresentationRoutes();
 
 module.exports = router;
