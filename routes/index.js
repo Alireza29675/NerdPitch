@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const auth = require('../server/AuthController');
+const user = require('../server/UserController');
 const presentation = require('../server/PresentationController');
 
 router.get('/', (req, res, err) => {
@@ -17,22 +17,22 @@ router.get('/', (req, res, err) => {
 const setUserRoutes = () => {
 
     // restrict index for logged in user only
-    router.get('/home', auth.home);
+    router.get('/home', user.home);
 
     // route to register page
-    router.get('/register', auth.register);
+    router.get('/register', user.register);
 
     // route for register action
-    router.post('/register', auth.doRegister);
+    router.post('/register', user.doRegister);
 
     // route to login page
-    router.get('/login', auth.login);
+    router.get('/login', user.login);
 
     // route for login action
-    router.post('/login', auth.doLogin);
+    router.post('/login', user.doLogin);
 
     // route for logout action
-    router.get('/logout', auth.logout);
+    router.get('/logout', user.logout);
 
 }
 

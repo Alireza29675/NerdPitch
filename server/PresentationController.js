@@ -2,9 +2,17 @@ const Presentation = require('./model/Presentation')
 
 var presentationController = {};
 
-// Restrict access to root page
+// Creating new Presentation
+presentationController.create = function(req, res) {
+
+    console.log(res.data)
+
+}
+
+// Showing Presentation
 presentationController.show = function(req, res) {
-    Presentation.findOne({ url: req.params.url }).exec((err, presentation) => {
+
+    Presentation.findOne({ url: req.params.url }).populate('author').exec((err, presentation) => {
         
         // if couldn't find presentation
         if (err || !presentation) {
@@ -22,6 +30,7 @@ presentationController.show = function(req, res) {
         res.render('presentations/show', { presentation: presentation })
 
     })
+    
 }
 
 module.exports = presentationController;
