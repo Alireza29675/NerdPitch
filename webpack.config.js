@@ -13,9 +13,6 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader',
                 query: { presets: ['es2015'] }
-            }, {
-                test: /\.sass$/,
-                use: [{ loader: "style-loader" }, { loader: "css-loader?-url" }, { loader: "sass-loader" }]
             }]
     }
 };
