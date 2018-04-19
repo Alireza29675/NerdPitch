@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../server/AuthController');
 
+router.get('/', (req, res, err) => {
+    res.render('index');
+})
+
 const setUserRoutes = () => {
 
     // restrict index for logged in user only
