@@ -40,6 +40,9 @@ const setUserRoutes = () => {
     // route for creating new presentation
     router.get('/presentations/new', user.createPresentation);
 
+    // route for creating new presentation action
+    router.post('/presentations/new', presentation.create);
+
 }
 
 const setPresentationRoutes = () => {

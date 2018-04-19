@@ -5,7 +5,23 @@ var presentationController = {};
 // Creating new Presentation
 presentationController.create = function(req, res) {
 
-    console.log(res.data)
+    // redirects to /login if user hasn't logged in yet
+    if (!req.isAuthenticated()) return res.redirect('/login');
+
+    const data = {
+        title: req.body.title,
+        content: req.body.content,
+        author: req.user._id,
+        url: req.body.url
+    }
+
+    const presentation = new Presentation(data);
+
+    presentation.save((err) => {
+        
+        res.redirect('/presentations')
+
+    })
 
 }
 

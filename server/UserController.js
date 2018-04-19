@@ -42,14 +42,14 @@ userController.login = function(req, res) {
 // Post login
 userController.doLogin = function(req, res) {
     passport.authenticate('local')(req, res, function () {
-        res.redirect(req.param('redirect') || '/home');
+        res.redirect(req.body.redirect || '/home');
     });
 };
 
 // logout
 userController.logout = function(req, res) {
     req.logout();
-    res.redirect('/');
+    res.redirect('/login');
 };
 
 // presentations page

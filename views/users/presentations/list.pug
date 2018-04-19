@@ -5,9 +5,10 @@ block content
     a(href='/presentations/new')
         button Create new presentation
 
-    ul
-    - for (let presentation of presentations) {
-        li
-            a(href='/show/' + presentation.url)
-            h1 #{presentation.title}
-    - }
+    ul.presentations-list
+        - for (let presentation of presentations) {
+            li
+                h2 #{presentation.title}
+                a(href='/show/' + presentation.url, target='_blank') show
+                a(href='/presentations/edit/' + presentation.url) edit
+        - }

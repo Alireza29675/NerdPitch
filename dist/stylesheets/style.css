@@ -40,9 +40,33 @@ input, button, textarea {
     outline: none;
 }
 
+input {
+    min-width: 600px;
+}
+
 textarea {
     min-width: 96%;
     max-width: 96%;
     height: 500px;
     padding: 2%;
+}
+
+.presentations-list {
+    margin: 0;
+    padding: 0;
+}
+
+.presentations-list li {
+    padding: 10px 20px;
+    background: #EEE;
+}
+
+.presentations-list li h2 {
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.presentations-list li a {
+    margin-left: 10px;
 }
