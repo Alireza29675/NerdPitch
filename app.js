@@ -5,8 +5,9 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const PrettyError = require('pretty-error');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+const sassMiddleware = require('node-sass-middleware');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 const pe = new PrettyError;
 
@@ -23,6 +24,13 @@ app.set('view engine', 'pug');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(sassMiddleware({
+  src: path.join(__dirname, 'client', 'stylesheets'),
+  dest: path.join(__dirname, 'dist'),
+  debug: true,
+  outputStyle: 'compressed',
+  prefix:  '/stylesheets'
+}))
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(require('express-session')({
   secret: 'cool hackers',

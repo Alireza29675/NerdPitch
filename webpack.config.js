@@ -1,10 +1,12 @@
 module.exports = {
     mode: 'development',
     devtool: 'inline-source-map',
-    entry: './client/index.js',
+    entry: {
+        vendor: './client/bundles/vendor/index.js'
+    },
     output: {
-        filename: './javascripts/bundle.js',
-        sourceMapFilename: './javascripts/bundle.js.map'
+        filename: './javascripts/[name].bundle.js',
+        sourceMapFilename: './javascripts/[name].bundle.js.map'
     },
     module: {
         rules: [
