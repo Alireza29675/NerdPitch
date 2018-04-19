@@ -1,0 +1,40 @@
+body {
+    background: #222;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    h1.title {
+        font-size: 80px;
+        font-weight: 100;
+        margin: 0;
+        padding: 0;
+        color: #fff;
+        text-shadow: 0 0 15px #000;
+
+        span {
+            color: #69b9c7;
+        }
+    }
+
+    a.login {
+        padding: 8px 45px 10px 45px;
+        display: inline-block;
+        margin-top: 40px;
+        border-radius: 10px;
+        background: #4ca5b4;
+        color: white;
+        text-decoration: none;
+        font-size: 17px;
+        transition-duration: 0.3s;
+
+        &:hover {
+            background: #9fe9f6;
+        }
+    }
+}
