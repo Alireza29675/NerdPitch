@@ -2,3 +2,5 @@ extends layout
 
 block content
     div#impress!= presentation.content
+    script(src='/javascripts/impress.js')
+    | <script>impress().init();</script>
