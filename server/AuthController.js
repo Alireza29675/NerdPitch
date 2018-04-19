@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var passport = require("passport");
-var User = require("../models/User");
+var User = require("./model/User");
 
 var userController = {};
 

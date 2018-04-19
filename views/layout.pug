@@ -4,5 +4,18 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    ul
+      if (!user)
+        li
+          a(href='/login') Login
+        li
+          a(href='/register') Register
+      if (user)
+        li
+          a Welcome #{user.name}
+        li
+          a(href='/logout') Logout
+    div.container
+      div.content
+        block content
     script(src='/javascripts/bundle.js')
