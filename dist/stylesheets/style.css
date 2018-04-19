@@ -10,7 +10,22 @@ nav {
     justify-content: space-around;
     align-items: center;
     background: #888;
-    list-style: none;    
+    list-style: none;
+}
+
+nav li a {
+    display: flex;
+    height: 60px;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .container {
