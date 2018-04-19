@@ -2,22 +2,28 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../server/AuthController');
 
-// restrict index for logged in user only
-router.get('/', auth.home);
+const setUserRoutes = () => {
 
-// route to register page
-router.get('/register', auth.register);
+    // restrict index for logged in user only
+    router.get('/home', auth.home);
 
-// route for register action
-router.post('/register', auth.doRegister);
+    // route to register page
+    router.get('/register', auth.register);
 
-// route to login page
-router.get('/login', auth.login);
+    // route for register action
+    router.post('/register', auth.doRegister);
 
-// route for login action
-router.post('/login', auth.doLogin);
+    // route to login page
+    router.get('/login', auth.login);
 
-// route for logout action
-router.get('/logout', auth.logout);
+    // route for login action
+    router.post('/login', auth.doLogin);
+
+    // route for logout action
+    router.get('/logout', auth.logout);
+
+}
+
+setUserRoutes();
 
 module.exports = router;
