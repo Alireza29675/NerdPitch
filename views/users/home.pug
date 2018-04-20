@@ -1,5 +1,7 @@
 extends layout
 
 block content
-  
-  
+    .home
+        .welcome
+            img(src=user.gravatar + '?s=200', alt=user.name + "'s Gravatar")
+            h1!= 'Welcome <span>' + user.firstname + '!</span>'

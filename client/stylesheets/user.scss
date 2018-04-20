@@ -251,3 +251,25 @@ nav {
         }
     }
 }
+
+.home {
+    padding: 60px;
+
+    .welcome {
+        text-align: center;
+
+        img {
+            border-radius: 50%;
+        }
+
+        h1 {
+            font-weight: 100;
+            margin: 15px;
+            font-size: 30px;
+
+            span {
+                font-weight: normal;
+            }
+        }
+    }
+}
