@@ -12,13 +12,13 @@ userController.home = function(req, res) {
     if (!req.isAuthenticated()) return res.redirect('/login');
 
     // otherwise it renders home view
-    res.render('users/home', { user: req.user, url: 'home' });
+    res.render('users/home', { user: req.user, url: 'home', title: 'Home' });
 
 };
 
 // Go to registration page
 userController.register = function(req, res) {
-    res.render('users/register', { url: 'register' });
+    res.render('users/register', { url: 'register', title: 'Register' });
 };
 
 // Post registration
@@ -31,7 +31,7 @@ userController.doRegister = function(req, res) {
     }
     User.register(new User(data), req.body.password, function(err, user) {
         if (err) {
-            return res.render('users/register', { user: user, url: 'register' });
+            return res.render('users/register', { user: user, url: 'register', title: 'Register' });
         }
 
         passport.authenticate('local')(req, res, function () {
@@ -42,7 +42,7 @@ userController.doRegister = function(req, res) {
 
 // Go to login page
 userController.login = function(req, res) {
-    res.render('users/login', { redirect: req.query.redirect || '/home', url: 'login' });
+    res.render('users/login', { redirect: req.query.redirect || '/home', url: 'login', title: 'Login' });
 };
 
 // Post login
@@ -67,7 +67,7 @@ userController.presentations = function(req, res) {
     // otherwise it renders presentations view
     Presentation.find({ author: req.user._id }).exec((err, presentations) => {
 
-        res.render('users/presentations/list', { user : req.user, presentations: presentations, url: 'presentations' });
+        res.render('users/presentations/list', { user : req.user, presentations: presentations, url: 'presentations', title: 'Presentations' });
 
     })
 
@@ -80,7 +80,7 @@ userController.createPresentation = function(req, res) {
     if (!req.isAuthenticated()) return res.redirect('/login?redirect=/presentations/new');
 
     // otherwise it renders new presentation view
-    res.render('users/presentations/new', { user: req.user, url: 'presentations/new' });
+    res.render('users/presentations/new', { user: req.user, url: 'presentations/new', title: 'New Presentation' });
 
 };
 
