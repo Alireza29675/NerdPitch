@@ -2,13 +2,20 @@ extends ../layout
 
 block content
   
-    a(href='/presentations/new')
-        button Create new presentation
+    if (presentations.length === 0)
+        .empty
+            h2
+                span It seems that you haven't built any presentations yet.
+                a(href='/presentations/new') build your first one now +
 
-    ul.presentations-list
-        - for (let presentation of presentations) {
-            li
-                h2 #{presentation.title}
-                a(href='/show/' + presentation.url, target='_blank') show
-                a(href='/presentations/edit/' + presentation.url) edit
-        - }
+    if (presentations.length > 0)
+        a(href='/presentations/new')
+            button Create new presentation
+
+        ul.presentations-list
+            - for (let presentation of presentations) {
+                li
+                    h2 #{presentation.title}
+                    a(href='/show/' + presentation.url, target='_blank') show
+                    a(href='/presentations/edit/' + presentation.url) edit
+            - }

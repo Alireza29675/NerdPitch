@@ -93,10 +93,48 @@ nav {
         background: #FFF;
         color: black;
         transition-duration: 0.3s;
+        outline: none;
 
         &:hover {
             background: #f43b35;
             color: white;
+        }
+    }
+}
+
+.empty {
+    text-align: center;
+    margin-top: 170px;
+    margin-bottom: 100px;
+
+    h2 {
+
+        span {
+            color: #CCC;
+            display: block;
+            font-weight: normal;
+        }
+
+        a {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background: #f93c36;
+            font-size: 17px;
+            font-weight: normal;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition-duration: 0.2s;
+
+            &:hover {
+                background: #ff412e;
+                transform: scale(1.08)
+            }
+    
+            &:active {
+                transform: scale(1)
+            }
         }
     }
 }
