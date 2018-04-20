@@ -21,11 +21,9 @@ html
 
       if (user)
         li
-          a(href='/home') Welcome #{user.firstname}
-        li
           a(href='/presentations') Presentations
-        li
-          a(href='/logout') Logout
+        li.logged-in-user
+          img.avatar(src=user.gravatar, alt=user.name + "'s Gravatar")
     div.container
       div.content
         block content
