@@ -23,7 +23,13 @@ userController.register = function(req, res) {
 
 // Post registration
 userController.doRegister = function(req, res) {
-    User.register(new User({ username : req.body.username, name: req.body.name }), req.body.password, function(err, user) {
+    const data = {
+        username : req.body.username,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email
+    }
+    User.register(new User(data), req.body.password, function(err, user) {
         if (err) {
             return res.render('users/register', { user: user, url: 'register' });
         }
