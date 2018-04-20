@@ -1,11 +1,10 @@
 extends ../layout
 
 block content
-  
-
-    form(role='form', action='/presentations/new', method='post')
-        h2 Create new presentation
-        input(type='text', name='title', placeholder='Enter Title')
-        textarea(name='content')
-        input(type='text', name='url', placeholder='Enter Unique Path, Like: how-volcano-works')
-        button(type='submit') Create
+    .form-container.new-presentation
+        form(role='form', action='/presentations/new', method='post')
+            h2 Create new presentation
+            input(type='text', name='title', placeholder='Enter Title')
+            textarea(name='content', placeholder='Paste your impress.js code here...')
+            input(type='text', name='url', placeholder='Enter Unique Path, Like: how-volcano-works')
+            button(type='submit') Create
