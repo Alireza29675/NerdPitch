@@ -1,3 +1,5 @@
+const Presentation = require('./model/Presentation')
+
 const socketioJwt = require('socketio-jwt');
 
 const config = require('../config/config');
@@ -52,6 +54,17 @@ class Server {
         socket.on('connectToPresentationAsAdmin',  (presentationUrl, cb)=> {
 
             //@todo:check whether it is his/her presentation or not
+
+            Presentation.findOne({
+                url: presentationUrl
+            }).then((data) => {
+                
+                if(!data.author.equals(socket.decoded_token._id)){
+                    // presentation is not her/his presentation
+                    return false;
+                }
+                
+            });
 
             socket.join(presentationUrl);
             console.log('Presentation Admin Joined', presentationUrl);

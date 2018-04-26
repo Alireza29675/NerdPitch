@@ -64,9 +64,32 @@ presentationController.show = function (req, res) {
 
 presentationController.PWA = function (req, res) {
 
-    let token = jwt.sign(req.user._doc,config.auth.secret,{ expiresIn: config.auth.lifeTime })
+    // let's find the title of the presentation
 
-    return res.render('PWA/index',{token,title:'title',presentationUrl: req.params.url});
+    Presentation.findOne({
+        url: req.params.url
+    }).then((data) => {
+        
+        if (!req.user._id.equals(data.author)) {
+            // presentation is not his/her!
+            res.sendStatus(403);
+            return;
+        }
+        
+
+        let token = jwt.sign(req.user._doc, config.auth.secret, {
+            expiresIn: config.auth.lifeTime
+        })
+
+        return res.render('PWA/index', {
+            token,
+            title: data.title,
+            presentationUrl: req.params.url
+        });
+
+    });
+
+
 
 }
 
