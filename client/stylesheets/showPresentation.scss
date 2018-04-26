@@ -31,7 +31,7 @@
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        background-color: #27ae60;
+        background-color: #c0392b;
         margin-left: 5px;
         margin-top: 10px;
         float: left;
@@ -50,7 +50,7 @@
             position: absolute;
             top: 0px;
             transition-duration: 0.2s;
-
+            transform: translateY(-30px);
             span{
                 width: 100%;
                 display: block;

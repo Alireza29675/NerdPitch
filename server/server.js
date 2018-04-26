@@ -68,9 +68,15 @@ class Server {
 
             socket.join(presentationUrl);
             console.log('Presentation Admin Joined', presentationUrl);
+
+            this._io.to(presentationUrl).emit('controlConnected');
             
             
             // events for admin presentation
+
+            socket.on('disconnect',()=>{
+                this._io.to(presentationUrl).emit('controlDisconnected');
+            });
 
             socket.on('nextSlide',()=>{
                 this._io.to(presentationUrl).emit('nextSlide');

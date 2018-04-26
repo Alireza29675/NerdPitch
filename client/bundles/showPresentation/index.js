@@ -17,8 +17,6 @@ class Presentation {
     initSocket() {
         this.socket.on('connect', () => {
 
-            this.changeStatus(1); //connected
-
             this.socket.emit('connectToPresentation', this.presentationUrl, (response) => {
                 if (response) {
                     this.socket.on('nextSlide', () => {
@@ -31,6 +29,12 @@ class Presentation {
                         this.impressApi.prev();
                         console.log('Prev Slide')
                     })
+                    this.socket.on('controlConnected',()=>{
+                        this.changeStatus(1); //connected
+                    });
+                    this.socket.on('controlDisconnected',()=>{
+                        this.changeStatus(0); //connected
+                    });
                 }
             });
 
