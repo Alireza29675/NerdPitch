@@ -3,13 +3,11 @@ var passport = require("passport");
 var User = require("./model/User");
 var Presentation = require('./model/Presentation');
 
+
 var userController = {};
 
 // Restrict access to root page
 userController.home = function(req, res) {
-    
-    // redirects to /login if user hasn't logged in yet
-    if (!req.isAuthenticated()) return res.redirect('/login');
 
     // otherwise it renders home view
     res.render('users/home', { user: req.user, url: 'home', title: 'Home' });
@@ -60,9 +58,6 @@ userController.logout = function(req, res) {
 
 // presentations page
 userController.presentations = function(req, res) {
-    
-    // redirects to /login if user hasn't logged in yet
-    if (!req.isAuthenticated()) return res.redirect('/login?redirect=/presentations');
 
     // otherwise it renders presentations view
     Presentation.find({ author: req.user._id }).exec((err, presentations) => {
@@ -75,9 +70,6 @@ userController.presentations = function(req, res) {
 
 // create presentation page
 userController.createPresentation = function(req, res) {
-    
-    // redirects to /login if user hasn't logged in yet
-    if (!req.isAuthenticated()) return res.redirect('/login?redirect=/presentations/new');
 
     // otherwise it renders new presentation view
     res.render('users/presentations/new', { user: req.user, url: 'presentations/new', title: 'New Presentation' });

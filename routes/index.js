@@ -4,6 +4,8 @@ const router = express.Router();
 const user = require('../server/UserController');
 const presentation = require('../server/PresentationController');
 
+const auth = require('../server/middlewares/auth');
+
 router.get('/', (req, res, err) => {
 
     // redirects user to /home if he/she has logged in already
@@ -17,31 +19,31 @@ router.get('/', (req, res, err) => {
 const setUserRoutes = () => {
 
     // restrict index for logged in user only
-    router.get('/home', user.home);
+    router.get('/home', auth.mustBeLoggedIn, user.home);
 
     // route to register page
-    router.get('/register', user.register);
+    router.get('/register', auth.mustNotBeLoggedIn, user.register);
 
     // route for register action
-    router.post('/register', user.doRegister);
+    router.post('/register', auth.mustNotBeLoggedIn, user.doRegister);
 
     // route to login page
-    router.get('/login', user.login);
+    router.get('/login', auth.mustNotBeLoggedIn, user.login);
 
     // route for login action
-    router.post('/login', user.doLogin);
+    router.post('/login', auth.mustNotBeLoggedIn, user.doLogin);
 
     // route for logout action
-    router.get('/logout', user.logout);
+    router.get('/logout', auth.mustBeLoggedIn, user.logout);
 
     // route for going to presentations page
-    router.get('/presentations', user.presentations);
+    router.get('/presentations', auth.mustBeLoggedIn, user.presentations);
 
     // route for creating new presentation
-    router.get('/presentations/new', user.createPresentation);
+    router.get('/presentations/new', auth.mustBeLoggedIn, user.createPresentation);
 
     // route for creating new presentation action
-    router.post('/presentations/new', presentation.create);
+    router.post('/presentations/new', auth.mustBeLoggedIn, presentation.create);
 
 }
 
@@ -50,6 +52,7 @@ const setPresentationRoutes = () => {
 }
 
 setUserRoutes();
+
 setPresentationRoutes();
 
 module.exports = router;
