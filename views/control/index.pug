@@ -3,11 +3,21 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
+
+        link(rel="stylesheet", href="/stylesheets/control.css")
+
         title Nerd Pitch | #{title}
     body
         block content
-            input(type='submit',value='next')
-            input(type='submit',value='prev')
+            div.wrapper
+                .controlPanel
+                    .statusText.
+                        Connected
+                    div.controlButtons
+                        div
+                            button.nextSlideBtn Next Slide
+                        div
+                            button.prevSlideBtn Previous Slide
         script.
             window.token = `#{token}`;
             window.presentationUrl = `#{presentationUrl}`;

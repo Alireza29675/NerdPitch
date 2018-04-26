@@ -16,11 +16,11 @@
             socket.emit('connectToPresentationAsAdmin', presentationUrl, (response) => {
                 if (response) {
                     // some code
-                    $("input[value=next]").onclick = () => {
+                    $(".nextSlideBtn").onclick = () => {
                         console.log('next')
                         socket.emit('nextSlide');
                     }
-                    $("input[value=prev]").onclick = () => {
+                    $(".prevSlideBtn").onclick = () => {
                         console.log('pev')
                         socket.emit('prevSlide');
                     }
