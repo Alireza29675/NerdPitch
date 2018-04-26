@@ -1,28 +1,40 @@
 const io = require('socket.io-client');
 
-const token = window.token;
+class Presentation {
+    
+    constructor() {
 
-const presentationUrl = window.presentationUrl;
+        this.presentationUrl = window.presentationUrl;
 
-const impressApi = window.impress;
+        this.impressApi = window.impress;
 
-const socket = io.connect('/');
+        this.socket = io.connect('/');
 
-socket.on('connect', () => {
+        this.initSocket();
 
-    socket.emit('connectToPresentation', presentationUrl, (response) => {
-        if (response) {
-            socket.on('nextSlide', () => {
-                document.dispatchEvent(new Event('nerdPitch:nextSlide'))
-                impressApi.next();
-                console.log('Next Slide');
-            })
-            socket.on('prevSlide', () => {
-                document.dispatchEvent(new Event('nerdPitch:prevSlide'))
-                impressApi.prev();
-                console.log('Prev Slide')
-            })
-        }
-    });
+    }
 
-});
+    initSocket() {
+        this.socket.on('connect', () => {
+
+            this.socket.emit('connectToPresentation', this.presentationUrl, (response) => {
+                if (response) {
+                    this.socket.on('nextSlide', () => {
+                        document.dispatchEvent(new Event('nerdPitch:nextSlide'))
+                        this.impressApi.next();
+                        console.log('Next Slide');
+                    })
+                    this.socket.on('prevSlide', () => {
+                        document.dispatchEvent(new Event('nerdPitch:prevSlide'))
+                        this.impressApi.prev();
+                        console.log('Prev Slide')
+                    })
+                }
+            });
+
+        });
+    }
+
+}
+
+new Presentation();
