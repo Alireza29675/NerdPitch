@@ -1,1 +1,7 @@
-console.log('Vendor!')
+window.$ = (querySelector)=>{
+    return document.querySelector(querySelector);
+}
+
+window.$$ = (querySelector)=>{
+    return document.querySelectorAll(querySelector);
+}

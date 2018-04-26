@@ -33,14 +33,16 @@ presentationController.create = function (req, res) {
 // Showing Presentation
 presentationController.show = function (req, res) {
 
+    const presentationUrl = req.params.url;
+
     Presentation.findOne({
-        url: req.params.url
+        url: presentationUrl
     }).populate('author').exec((err, presentation) => {
 
         // if couldn't find presentation
         if (err || !presentation) {
             console.log(err)
-            const message = `Oops! We couldn't find /${req.params.url}`;
+            const message = `Oops! We couldn't find /${presentationUrl}`;
             res.locals.message = message;
             res.status(404);
             res.locals.error = {
@@ -52,7 +54,8 @@ presentationController.show = function (req, res) {
 
         // if it could find presentation, it would shown that
         res.render('presentations/show', {
-            presentation: presentation
+            presentation,
+            presentationUrl
         })
 
     })
@@ -63,7 +66,7 @@ presentationController.PWA = function (req, res) {
 
     let token = jwt.sign(req.user._doc,config.auth.secret,{ expiresIn: config.auth.lifeTime })
 
-    return res.render('PWA/index',{token,title:'title'});
+    return res.render('PWA/index',{token,title:'title',presentationUrl: req.params.url});
 
 }
 

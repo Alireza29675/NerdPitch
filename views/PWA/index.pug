@@ -6,6 +6,10 @@ html(lang="en")
         title Nerd Pitch | #{title}
     body
         block content
+            input(type='submit',value='next')
+            input(type='submit',value='prev')
         script.
             window.token = `#{token}`;
+            window.presentationUrl = `#{presentationUrl}`;
+        script(src='/javascripts/vendor.bundle.js')
         script(src='/javascripts/PWA.bundle.js')

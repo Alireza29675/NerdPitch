@@ -2,5 +2,12 @@ extends layout
 
 block content
     div#impress!= presentation.content
+    script.
+        window.token = `#{token}`;
+        window.presentationUrl = `#{presentationUrl}`;
     script(src='/javascripts/impress.js')
-    | <script>impress().init();</script>
+    script.
+        let impressApi = impress();
+        impressApi.init();
+        window.impress = impressApi;
+    script(src='/javascripts/showPresentation.bundle.js')
