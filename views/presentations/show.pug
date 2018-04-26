@@ -1,7 +1,18 @@
 extends layout
 
+block style
+    link(rel="stylesheet", href="/stylesheets/showPresentation.css")
+
 block content
     div#impress!= presentation.content
+    div.socketConnection
+        span Synced
+    div.socketConnectionMarker
+        i
+        div.socketConnectionTextCont
+            div.socketConnectionTextSliderCont
+                span Connected
+                span Disconnected
     script.
         window.token = `#{token}`;
         window.presentationUrl = `#{presentationUrl}`;
@@ -10,4 +21,5 @@ block content
         let impressApi = impress();
         impressApi.init();
         window.impress = impressApi;
+    script(src='/javascripts/vendor.bundle.js')
     script(src='/javascripts/showPresentation.bundle.js')
