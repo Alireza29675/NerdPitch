@@ -1,10 +1,14 @@
 const Presentation = require('./model/Presentation')
 const User = require('../server/model/User')
 
+const jwt = require('jsonwebtoken');
+
+const config = require('../config/config');
+
 var presentationController = {};
 
 // Creating new Presentation
-presentationController.create = function(req, res) {
+presentationController.create = function (req, res) {
 
     // redirects to /login if user hasn't logged in yet
     if (!req.isAuthenticated()) return res.redirect('/login');
@@ -19,7 +23,7 @@ presentationController.create = function(req, res) {
     const presentation = new Presentation(data);
 
     presentation.save((err) => {
-        
+
         res.redirect('/presentations')
 
     })
@@ -27,9 +31,11 @@ presentationController.create = function(req, res) {
 }
 
 // Showing Presentation
-presentationController.show = function(req, res) {
+presentationController.show = function (req, res) {
 
-    Presentation.findOne({ url: req.params.url }).populate('author').exec((err, presentation) => {
+    Presentation.findOne({
+        url: req.params.url
+    }).populate('author').exec((err, presentation) => {
 
         // if couldn't find presentation
         if (err || !presentation) {
@@ -45,10 +51,20 @@ presentationController.show = function(req, res) {
         }
 
         // if it could find presentation, it would shown that
-        res.render('presentations/show', { presentation: presentation })
+        res.render('presentations/show', {
+            presentation: presentation
+        })
 
     })
-    
+
+}
+
+presentationController.PWA = function (req, res) {
+
+    let token = jwt.sign(req.user._doc,config.auth.secret,{ expiresIn: config.auth.lifeTime })
+
+    return res.render('PWA/index',{token,title:'title'});
+
 }
 
 module.exports = presentationController;

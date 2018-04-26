@@ -1,3 +1,7 @@
+const socketioJwt = require('socketio-jwt');
+
+const config = require('../config/config');
+
 class Server {
 
     constructor () {
@@ -14,14 +18,18 @@ class Server {
     }
 
     init () {
-        this.io.on('connection', onUserConnected);
+        this.io.on('connection', socketioJwt.authorize({
+            secret: config.auth.secret,
+            timeout: 1000 // 1 seconds to send the authentication message 
+          })).on('authenticated', function(socket) {
+            //this socket is authenticated, we are good to handle more events from it. 
+
+          }).on("test",()=>{
+              console.log("test")
+          });
     }
 
 }
-
-const onUserConnected = socket => {
-    
-};
 
 const server = new Server;
 
