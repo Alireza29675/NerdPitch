@@ -53,7 +53,7 @@ class Server {
     continueForPresentation(socket) {
         socket.on('connectToPresentationAsAdmin',  (presentationUrl, cb)=> {
 
-            //@todo:check whether it is his/her presentation or not
+            // check whether it is his/her presentation or not
 
             Presentation.findOne({
                 url: presentationUrl

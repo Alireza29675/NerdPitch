@@ -62,7 +62,7 @@ presentationController.show = function (req, res) {
 
 }
 
-presentationController.PWA = function (req, res) {
+presentationController.control = function (req, res) {
 
     // let's find the title of the presentation
 
@@ -81,7 +81,7 @@ presentationController.PWA = function (req, res) {
             expiresIn: config.auth.lifeTime
         })
 
-        return res.render('PWA/index', {
+        return res.render('control/index', {
             token,
             title: data.title,
             presentationUrl: req.params.url
