@@ -1,5 +1,16 @@
-const SocketController = require('../../model/socket');
+const io = require('socket.io-client');
 
-const socketController = new SocketController(window.token);
+const token = window.token;
 
-socketController.connect();
+
+const socket = io.connect('/');
+
+socket.on('connect', () => {
+    
+    socket.on('authenticated', function () {
+        //do other things 
+
+    }).emit('authenticate', {
+        token
+    }) //send the jwt 
+});
