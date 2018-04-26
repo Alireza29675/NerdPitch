@@ -1,33 +1,61 @@
-// Socket inititalizations
+const io = require('socket.io-client');
 
-{
-    const io = require('socket.io-client');
+class Control {
+    constructor() {
 
-    const token = window.token;
+        this.token = window.token;
 
-    const presentationUrl = window.presentationUrl;
+        this.presentationUrl = window.presentationUrl;
 
-    const socket = io.connect('/');
+        this.socket = io.connect('/');
 
-    socket.on('connect', () => {
+        this.initSocket();
 
-        socket.on('authenticated', function () {
-            //do other things 
-            socket.emit('connectToPresentationAsAdmin', presentationUrl, (response) => {
-                if (response) {
-                    // some code
-                    $(".nextSlideBtn").onclick = () => {
-                        console.log('next')
-                        socket.emit('nextSlide');
+    }
+
+    initSocket() {
+
+        this.socket.on('connect', () => {
+            
+            this.changeStatus(1);// connect
+
+            this.socket.on('authenticated',  ()=> {
+                //do other things 
+                this.socket.emit('connectToPresentationAsAdmin', presentationUrl, (response) => {
+                    if (response) {
+                        // some code
+                        $(".nextSlideBtn").onclick = () => {
+                            console.log('next')
+                            this.socket.emit('nextSlide');
+                        }
+                        $(".prevSlideBtn").onclick = () => {
+                            console.log('pev')
+                            this.socket.emit('prevSlide');
+                        }
                     }
-                    $(".prevSlideBtn").onclick = () => {
-                        console.log('pev')
-                        socket.emit('prevSlide');
-                    }
-                }
-            })
-        }).emit('authorize').emit('authenticate', {
-            token
-        }) //send the jwt 
-    });
+                })
+            }).emit('authorize').emit('authenticate', {
+                token
+            }) //send the jwt 
+        });
+
+        this.socket.on('disconnect', () => {
+            this.changeStatus(0);
+        })
+    }
+
+    changeStatus(status){
+
+        if(status){
+            $('.statusSlideCont').style.transform = 'translateY(0px)';
+            $('.controlButtons').style.filter = 'blur(0px)';
+        }else{
+            $('.statusSlideCont').style.transform = 'translateY(-50px)';
+            $('.controlButtons').style.filter = 'blur(10px)';
+        }
+
+    }
+
 }
+
+new Control();

@@ -1,5 +1,4 @@
 @import 'globals/father';
-
 .wrapper {
     width: 100%;
     min-height: 100%;
@@ -8,38 +7,47 @@
     left: 0px;
     background-color: $secondaryColor;
     font-family: $font-family;
-
-    .controlPanel{
+    .controlPanel {
         width: 400px;
         min-height: 120px;
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%,-50%);
-
-        .statusText{
+        transform: translate(-50%, -50%);
+        transition-duration: 0.5s;
+        .statusCont {
             width: 100%;
-            height: 40px;
-            text-align: center;
-            line-height: 40px;
-            font-size: 50px;
-            color: $primaryColor;
+            height: 50px;
             margin-bottom: 20px;
-            text-shadow: $text-shadow;
+            overflow: hidden;
+            position: relative;
+            .statusSlideCont {
+                width: 100%;
+                height: 100px;
+                position: absolute;
+                top: 0px;
+                transition-duration: 0.5s;
+                .statusText {
+                    width: 100%;
+                    height: 50px;
+                    text-align: center;
+                    line-height: 50px;
+                    font-size: 50px;
+                    color: $primaryColor;
+                    text-shadow: $text-shadow;
+                }
+            }
         }
-
-        .controlButtons{
+        .controlButtons {
             width: 100%;
             height: 60px;
-
-            div{
+            div {
                 width: 50%;
                 height: 100%;
                 float: right;
                 padding: 10px;
                 box-sizing: border-box;
-
-                button{
+                button {
                     width: 50%;
                     height: 100%;
                     outline: none;
@@ -52,17 +60,13 @@
                     border: 1px solid $primaryColor;
                     transition-duration: 0.2s;
                 }
-
-                button:hover{
+                button:hover {
                     transition-duration: 0.2s;
                     color: $secondaryColor;
                     border-color: $secondaryColor;
                     background-color: $primaryColor;
                 }
-
             }
-
         }
-
     }
 }
