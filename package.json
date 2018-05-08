@@ -8,7 +8,10 @@
     "start:watch": "nodemon ./bin/www",
     "bundle": "webpack",
     "bundle:watch": "webpack --watch",
-    "production": "pm2 start ./bin/www"
+    "production:start": "pm2 start ./bin/www --name nerdpitch",
+    "production:restart": "pm2 restart nerdpitch",
+    "production:stop": "pm2 stop nerdpitch",
+    "pull": "git pull && npm run production:restart"
   },
   "author": "NerdPitch Team",
   "repository": {
