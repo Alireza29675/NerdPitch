@@ -7,7 +7,8 @@
     "start": "webpack && node ./bin/www",
     "start:watch": "nodemon ./bin/www",
     "bundle": "webpack",
-    "bundle:watch": "webpack --watch"
+    "bundle:watch": "webpack --watch",
+    "production": "pm2 start ./bin/www"
   },
   "author": "NerdPitch Team",
   "repository": {
