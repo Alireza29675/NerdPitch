@@ -8,8 +8,8 @@
     "start:watch": "nodemon ./bin/www",
     "bundle": "webpack",
     "bundle:watch": "webpack --watch",
-    "production:start": "pm2 start ./bin/www --name nerdpitch",
-    "production:restart": "pm2 restart nerdpitch",
+    "production:start": "PORT=80 pm2 start ./bin/www --name nerdpitch",
+    "production:restart": "PORT=80 pm2 restart nerdpitch",
     "production:stop": "pm2 stop nerdpitch",
     "pull": "git pull && npm run production:restart"
   },
