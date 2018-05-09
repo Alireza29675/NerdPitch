@@ -67,7 +67,6 @@ class Server {
             });
 
             socket.join(presentationUrl);
-            console.log('Presentation Admin Joined', presentationUrl);
 
             this._io.to(presentationUrl).emit('controlConnected');
             
@@ -93,7 +92,6 @@ class Server {
 
     continueForGuestsPresentation(socket,presentationUrl){
             socket.join(presentationUrl);
-            console.log('Guest joined '+presentationUrl);
     }
 
 }
