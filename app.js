@@ -11,6 +11,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 const pe = new PrettyError;
 
+const auth = require('./routes/auth');
 const index = require('./routes/index');
 const presentation = require('./routes/presentation');
 
@@ -40,6 +41,7 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use('/',auth);
 app.use('/', index);
 app.use('/',presentation);
 
