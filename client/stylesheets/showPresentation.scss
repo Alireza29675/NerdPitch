@@ -1,25 +1,4 @@
 @import 'globals/father';
-.socketConnection {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-    background-color: transparentize($secondaryColor, 0.10);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition-duration: 0.2s;
-    transform: translateX(-100%);
-    span {
-        color: $primaryColor;
-        font-family: $font-family;
-        font-size: 80px;
-        text-shadow: $text-shadow;
-        transition-duration: 0.2s;
-        transform: scale(0);
-    }
-}
 .socketConnectionMarker{
     width: 100px;
     height: 30px;
