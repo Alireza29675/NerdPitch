@@ -48,18 +48,6 @@ class Presentation {
 
     changeStatus(status) {
         if (status) {
-            // let's show synced
-            $('.socketConnection span').style.transitionDelay = '0.2s'
-            $('.socketConnection span').style.transform = 'scale(1)';
-            $('.socketConnection').style.transform = 'translateX(0px)';
-            setTimeout(() => {
-                // let's hide
-                $('.socketConnection span').style.transitionDelay = '0s'
-                $('.socketConnection').style.transitionDelay = '0.2s'
-                $('.socketConnection span').style.transform = 'scale(0)';
-                $('.socketConnection').style.transform = 'translateX(-100%)';
-            }, 1500)
-
             // let's make the marker green
 
             $('.socketConnectionMarker>i').style.backgroundColor = '#27ae60';
