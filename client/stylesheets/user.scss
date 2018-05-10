@@ -56,12 +56,11 @@ nav {
 }
 
 .form-container {
-    text-align: center;
     padding-top: 30px;
 
     form {
         display: inline-block;
-        text-align: center;
+        // text-align: center;
         padding-bottom: 40px;
     }
 
@@ -116,17 +115,10 @@ nav {
             width: 400px;
         }
         
-        textarea {
-            display: block;
-            font-size: 16px;
-            background: #CCC;
-            border: none;
-            padding: 2%;
-            margin: 10px;
-            outline: none;
-            transition-duration: 0.5s;
-            align-self: stretch;
+        #monacoCont {
             height: 400px;
+            padding-left: 10px;
+            box-sizing: border-box;
 
             &:focus {
                 background: #FFF;

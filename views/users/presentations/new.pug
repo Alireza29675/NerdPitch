@@ -1,10 +1,39 @@
 extends ../layout
 
+block styles
+    link(rel="stylesheet",data-name="vs/editor/editor.main",href="/javascripts/vs/editor/editor.main.css")
+
 block content
     .form-container.new-presentation
         form(role='form', action='/presentations/new', method='post')
             h2 Create new presentation
             input(type='text', name='title', placeholder='Enter Title')
-            textarea(name='content', placeholder='Paste your impress.js code here...')
+            #monacoCont(name='content')
+            textarea(name="content", style='display:none')
             input(type='text', name='url', placeholder='Enter Unique Path, Like: how-volcano-works')
             button(type='submit') Create
+block scripts
+    script.
+        var require = { paths: { 'vs': '/javascripts/vs' } };
+    script(src="/javascripts/vs/loader.js")
+    script(src="/javascripts/vs/editor/editor.main.nls.js")
+    script(src="/javascripts/vs/editor/editor.main.js")
+
+    script.
+        var editor = monaco.editor.create(document.querySelector('#monacoCont'), {
+            value: [
+                '<div>',
+                '\t',
+                '</div>'
+            ].join('\n'),
+            language: 'html'
+        });
+        monaco.editor.setTheme('vs-dark');
+    script.
+        document.querySelector("button").onclick = (e)=>{
+            // to send monaco editors content to server as form submited
+            e.preventDefault()
+            document.querySelector("textarea[name=content]").value = editor.getValue();
+            document.querySelector('form').submit()
+        }
+            

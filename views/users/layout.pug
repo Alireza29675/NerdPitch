@@ -4,6 +4,7 @@ html
     title= title + ' | Nerd Pitch'
     link(rel="stylesheet", href="/stylesheets/vendor.css")
     link(rel="stylesheet", href="/stylesheets/user.css")
+    block styles
   body
     nav
       li
@@ -29,4 +30,5 @@ html
     div.container
       div.content
         block content
-    script(src='javascripts/vendor.bundle.js')
+    script(src='/javascripts/vendor.bundle.js')
+    block scripts
