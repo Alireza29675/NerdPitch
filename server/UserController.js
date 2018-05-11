@@ -11,7 +11,6 @@ userController.home = function (req, res) {
 
     // otherwise it renders home view
     res.render('users/home', {
-        user: req.user,
         url: 'home',
         title: 'Home'
     });
@@ -80,7 +79,6 @@ userController.presentations = function (req, res) {
     }).exec((err, presentations) => {
 
         res.render('users/presentations/list', {
-            user: req.user,
             presentations: presentations,
             url: 'presentations',
             title: 'Presentations'
@@ -95,7 +93,6 @@ userController.createPresentation = function (req, res) {
 
     // otherwise it renders new presentation view
     res.render('users/presentations/new', {
-        user: req.user,
         url: 'presentations/new',
         title: 'New Presentation'
     });
