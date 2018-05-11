@@ -19,6 +19,12 @@ router.get('/presentations/new', auth.mustBeLoggedIn, user.createPresentation);
 // route for creating new presentation action
 router.post('/presentations/new', auth.mustBeLoggedIn, presentation.create);
 
+// route for editing an existing presentation
+router.get('/presentations/edit/:url', auth.mustBeLoggedIn, user.editPresentation);
+
+// route for editing an existing presentation
+router.post('/presentations/edit', auth.mustBeLoggedIn, presentation.edit);
+
 // show the presentation
 router.get('/show/:url', presentation.show)
 
