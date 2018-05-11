@@ -66,13 +66,13 @@ presentationController.control = function (req, res) {
     Presentation.findOne({
         url: req.params.url
     }).then((data) => {
-        
+
         if (!req.user._id.equals(data.author)) {
             // presentation is not his/her!
             res.sendStatus(403);
             return;
         }
-        
+
 
         let token = jwt.sign(req.user._doc, config.auth.secret, {
             expiresIn: config.auth.lifeTime
@@ -87,6 +87,24 @@ presentationController.control = function (req, res) {
     });
 
 
+
+}
+
+presentationController.edit = function (req, res) {
+    const data = {
+        url: req.body.url,
+        title: req.body.title,
+        content: req.body.content
+    }
+    console.log("salam")
+    Presentation.update({
+        url: data.url
+    }, {
+        title: data.title,
+        content: data.content
+    }).then(() => {
+        res.redirect('/presentations');
+    })
 
 }
 
