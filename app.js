@@ -14,6 +14,7 @@ const pe = new PrettyError;
 const auth = require('./routes/auth');
 const index = require('./routes/index');
 const presentation = require('./routes/presentation');
+const api = require('./routes/api')
 
 const app = express();
 
@@ -43,7 +44,8 @@ app.use(passport.session());
 
 app.use('/',auth);
 app.use('/', index);
-app.use('/',presentation);
+app.use('/', presentation);
+app.use('/api', api);
 
 // passport configuration
 var User = require('./server/model/User');
