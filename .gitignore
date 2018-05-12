@@ -59,3 +59,5 @@ typings/
 
 *.bundle.js
 .DS_Store
+
+dist/stylesheets/

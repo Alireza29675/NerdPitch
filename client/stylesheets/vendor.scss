@@ -1,5 +1,12 @@
+@import 'globals/basics';
+
 * {
-    font-family: 'Fira Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: $letter-font;
+
+    &::selection { 
+        background: $primaryColor;
+        color: white;
+    }
 }
 
 body {

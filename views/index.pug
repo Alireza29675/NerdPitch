@@ -5,12 +5,13 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         title=title + general.description
-
+        link(href='https://fonts.googleapis.com/css?family=Lora', rel='stylesheet')
         link(href='/stylesheets/index.css',rel='stylesheet')
         link(href='/stylesheets/vendor.css',rel='stylesheet')
 
     body
         div#wrapper
+            img.background-fade(src='/images/background-fade.png')
             div.mainCont
                 section
                     div
@@ -26,7 +27,7 @@ html(lang="en")
                     div
                         form(action="")
                             input(placeholder='Your email here',type='email',required)
-                            button Inform me
+                            button inform me
             footer.
                 Powered in <a href="http://hackairan.com/" target="_blank">HackaIran</a>
         script(src="https://unpkg.com/axios/dist/axios.min.js")

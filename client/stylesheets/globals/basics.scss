@@ -1,0 +1,15 @@
+$primaryColor: #0057ff;
+$secondaryColor: #2980b9;
+
+$primaryLighten-1: lighten($primaryColor, 10);
+$primaryLighten-2: lighten($primaryColor, 20);
+$primaryLighten-3: lighten($primaryColor, 30);
+
+$letter-font: 'Lora', 'Fira Sans', sans-serif;
+$modern-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+$text-shadow: 0px 0px 3px lighten($primaryColor,5);
+
+.color{
+    color: $primaryColor;
+}
