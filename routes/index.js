@@ -11,7 +11,7 @@ router.get('/', (req, res, err) => {
     if (req.isAuthenticated()) return res.redirect('/home');
 
     // otherwise renders index view
-    res.render('index',{title:'nerdpitch'});
+    res.render('index', { title: 'NerdPitch' });
 
 });
 
