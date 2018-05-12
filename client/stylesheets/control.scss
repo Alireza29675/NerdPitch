@@ -6,8 +6,8 @@
     position: absolute;
     top: 0px;
     left: 0px;
-    background-color: $secondaryColor;
-    font-family: $font-family;
+    background-color: white;
+    font-family: $letter-font;
     .controlPanel {
         width: 100%;
         max-width: 400px;
@@ -56,7 +56,7 @@
                     border: none;
                     background-color: transparent;
                     color: $primaryColor;
-                    font-family: $font-family;
+                    font-family: $letter-font;
                     width: 100%;
                     cursor: pointer;
                     border: 1px solid $primaryColor;
