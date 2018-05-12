@@ -1,6 +1,8 @@
 @import 'globals/basics';
 
 #wrapper {
+    width: 100%;
+    overflow-x: hidden;
 
     .background-fade {
         min-width: 100%;
