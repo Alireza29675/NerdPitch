@@ -167,20 +167,39 @@
 
 @media screen and (max-width: 500px) {
     .mainCont {
+        width: 80% !important;
+        margin-top: 150px !important;
+
+        &>section:first-of-type img {
+            height: 160px !important;
+        }
+
+        &>section:first-of-type q {
+            width: 300px !important;
+        }
 
         section:last-of-type {
             div:first-of-type {
+                position: relative;
+
+                img {
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
                 div {
                     width: 100%!important;
-                    padding-bottom: 10px;
+                    padding-bottom: 20px;
 
                     span {
                         margin-left: 0px!important;
-                        text-align: center;
+                        background: rgba(255, 255, 255, 0.9);
                     }
                 }
             }
             div:last-of-type {
+            
                 input {
                     width: calc(100% - 100px)!important;
                 }
@@ -188,6 +207,10 @@
                     width: 100px!important;
                 }
             }
+        }
+
+        footer {
+
         }
     }
 }
