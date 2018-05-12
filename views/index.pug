@@ -1,8 +1,30 @@
-extends layout
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title=title
 
-block content
-    .center
-        h1.hidden nerdpitch
-        img(src="/images/nerdpitch.png", alt="NerdPitch logo")
-        p NerdPitch is a the most beloved tool for spreading knowledge and ideas.
-        a.login(href='/login') Login first!
+        link(href='/stylesheets/index.css',rel='stylesheet')
+        link(href='/stylesheets/vendor.css',rel='stylesheet')
+
+    body
+        div#wrapper
+            div.mainCont
+                section
+                    div
+                        img(src='/images/nerdpitch-logo.png')
+                    div
+                        q nerdpitch is an innovative way of presenting knowledge and ideas. 
+                section
+                    div
+                        img(src='/images/megaphone.png')
+                        div
+                            span We haven't launched yet, 
+                            span.color get informed first:
+                    div
+                        input(placeholder='Your email here')
+                        button Inform me
+            footer.
+                Powered in <a href="http://hackairan.com/" target="_blank">HackaIran</a>

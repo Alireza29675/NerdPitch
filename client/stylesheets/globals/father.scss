@@ -1,8 +1,16 @@
 @import 'font.scss';
 
-$primaryColor: #f93c36;
-$secondaryColor: #222;
+$primaryColor: #2980b9;
+$secondaryColor: #2980b9;
+
+$primaryLighten-1:lighten($primaryColor,10);
+$primaryLighten-2:lighten($primaryColor,20);
+$primaryLighten-3:lighten($primaryColor,30);
 
 $font-family: 'Fira Sans', sans-serif;
 
 $text-shadow: 0px 0px 3px lighten($primaryColor,5);
+
+.color{
+    color: $primaryColor;
+}
