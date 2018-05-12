@@ -24,7 +24,29 @@ html(lang="en")
                             span We haven't launched yet, 
                             span.color get informed first:
                     div
-                        input(placeholder='Your email here')
-                        button Inform me
+                        form(action="")
+                            input(placeholder='Your email here',type='email',required)
+                            button Inform me
             footer.
                 Powered in <a href="http://hackairan.com/" target="_blank">HackaIran</a>
+        script(src="https://unpkg.com/axios/dist/axios.min.js")
+        script.
+            document.querySelector('form').onsubmit = (e)=>{
+                e.preventDefault();
+                let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                let email = document.querySelector('input').value;
+                if(email.trim() !== '' && re.test(String(email).toLowerCase())){
+                    axios.post('/api/subscribe',{email}).then(()=>{
+                        // okay
+                        document.querySelector('input').value = '';
+                        document.querySelector('input').setAttribute('placeholder','Subscribed, Thanks!');
+                        document.querySelector('input').setAttribute('readonly','true');
+                        document.querySelector('button').setAttribute('disabled','true');
+                        document.querySelector('button').textContent = 'Subscribed';
+                    }).catch(()=>{
+                        // error
+                    })
+                }else{
+
+                }
+            }
