@@ -6,10 +6,10 @@ const user = require('../server/UserController');
 const auth = require('../server/middlewares/auth');
 
 // route to register page
-router.get('/register', auth.mustNotBeLoggedIn, user.register);
+// router.get('/register', auth.mustNotBeLoggedIn, user.register);
 
 // route for register action
-router.post('/register', auth.mustNotBeLoggedIn, user.doRegister);
+// router.post('/register', auth.mustNotBeLoggedIn, user.doRegister);
 
 // route to login page
 router.get('/login', auth.mustNotBeLoggedIn, user.login);
